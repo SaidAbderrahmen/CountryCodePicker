@@ -375,6 +375,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
             flagDecoration: widget.flagDecoration,
             dialogItemPadding: widget.dialogItemPadding,
             searchPadding: widget.searchPadding,
+             noCountry: widget.noCountry,
           ),
         ),
       ),

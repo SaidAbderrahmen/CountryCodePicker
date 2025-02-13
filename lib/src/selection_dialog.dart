@@ -24,6 +24,8 @@ class SelectionDialog extends StatefulWidget {
   final String? headerText;
   final EdgeInsets topBarPadding;
   final MainAxisAlignment headerAlignment;
+  final String? noCountry;
+
 
   /// Background color of SelectionDialog
   final Color? backgroundColor;
@@ -62,6 +64,7 @@ class SelectionDialog extends StatefulWidget {
     this.hideSearch = false,
     this.hideCloseIcon = false,
     this.closeIcon,
+    this.noCountry,
     this.dialogItemPadding = const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
     this.searchPadding = const EdgeInsets.symmetric(horizontal: 24),
   })  : searchDecoration = searchDecoration.prefixIcon == null ? searchDecoration.copyWith(prefixIcon: const Icon(Icons.search)) : searchDecoration,
@@ -208,7 +211,9 @@ class _SelectionDialogState extends State<SelectionDialog> {
     }
 
     return Center(
-      child: Text(CountryLocalizations.of(context)?.translate('no_country') ?? 'No country found'),
+      child: Text( widget.noCountry ??(
+        CountryLocalizations.of(context)?.translate('no_country') ??
+          'No country found')),
     );
   }
 
