@@ -18,6 +18,7 @@ class SelectionBottomSheet extends StatefulWidget {
   final Size? size;
   final bool hideSearch;
   final Icon? closeIcon;
+  final String? noCountry;
 
   /// Background color of SelectionBottomSheet
   final Color? backgroundColor;
@@ -45,6 +46,7 @@ class SelectionBottomSheet extends StatefulWidget {
     this.backgroundColor,
     this.barrierColor,
     this.hideSearch = false,
+    this.noCountry,
     this.closeIcon,
   })  : searchDecoration = searchDecoration.prefixIcon == null
             ? searchDecoration.copyWith(prefixIcon: const Icon(Icons.search))
@@ -179,8 +181,10 @@ class _SelectionBottomSheetState extends State<SelectionBottomSheet> {
     }
 
     return Center(
-      child: Text(CountryLocalizations.of(context)?.translate('no_country') ??
-          'No country found'),
+
+      child: Text( widget.noCountry ??(
+        CountryLocalizations.of(context)?.translate('no_country') ??
+          'No country found')),
     );
   }
 
